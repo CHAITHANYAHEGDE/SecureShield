@@ -4,7 +4,7 @@ To maintain scientific integrity, the entirety of SecureShield's core claims can
 
 ## 1. Prerequisites
 Ensure you have Python 3.9+ installed and a virtual environment active.
-Dependencies: `pandas`, `scikit-learn`, `shap`, `networkx`, `fastapi`, `uvicorn`.
+Dependencies: `pandas`, `scikit-learn`, `shap`, `networkx`.
 
 ## 2. Generating Research Data
 From the repository root:

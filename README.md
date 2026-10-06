@@ -3,19 +3,7 @@
 > **Research-oriented SOC platform integrating ML malware detection, forensic evidence correlation, incident timelines, MITRE ATT&CK mapping, risk assessment, and response recommendations.**
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-green.svg)
-![React](https://img.shields.io/badge/React-19-blue.svg)
-![Vite](https://img.shields.io/badge/Vite-8-purple.svg)
 
----
-
-## Live Demo
-- **Frontend (Dashboard)**: [https://secure-shield-phi.vercel.app](https://secure-shield-phi.vercel.app)
-- **Backend API**: [https://secureshield-hrsm.onrender.com/api](https://secureshield-hrsm.onrender.com/api)
-
-> **Note**: This is a controlled research deployment. Authentication and rate limiting are not enabled for this demonstration to allow full evaluation by reviewers.
-
----
 
 ## Overview
 
@@ -75,8 +63,6 @@ flowchart TD
     H --> I(Risk Assessment & Scoring)
     I --> J(Response Recommendations)
     end
-    
-    J --> K[SOC Dashboard Frontend]
 ```
 
 *Note: Forensic stages relying on timestamped telemetry are classified as `SIMULATED` or `DERIVED` natively by the Provenance Engine to preserve scientific integrity.*
@@ -85,7 +71,7 @@ flowchart TD
 
 ## End-to-End Workflow
 
-`Dataset` → `Preprocessing` → `ML Detection` → `SHAP` → `Forensic Normalization` → `Event Correlation` → `Timeline` → `Behavioral Analysis` → `MITRE ATT&CK` → `Risk` → `Response` → `SOC Dashboard`
+`Dataset` → `Preprocessing` → `ML Detection` → `SHAP` → `Forensic Normalization` → `Event Correlation` → `Timeline` → `Behavioral Analysis` → `MITRE ATT&CK` → `Risk` → `Response`
 
 ---
 
@@ -182,29 +168,13 @@ This distinction is central to SecureShield’s scientific integrity, preventing
 
 ---
 
-## Dashboard
-
-*(Note: Browser screenshot tooling was unavailable during final export; actual dashboard visual captures could not be generated programmatically. Please run the frontend locally to view the interactive dashboard.)*
-
-The dashboard features the following interactive panes:
-- Dashboard Overview
-- Malware Analysis
-- Forensic Evidence
-- Timeline
-- Incident Graph
-- MITRE ATT&CK
-- Risk & Response
-- Research Results
-
----
 
 ## Technology Stack
 
 | Domain | Technologies |
 | :--- | :--- |
-| **Backend** | Python, FastAPI, Pydantic, scikit-learn, XGBoost, LightGBM, CatBoost, SHAP, NetworkX |
-| **Frontend** | React, TypeScript, Vite, Tailwind CSS v4, React Flow, Recharts, Lucide |
-| **Testing / Reproducibility** | pytest, npm audit, deterministic random seeds |
+| **Core Pipeline** | Python, Pydantic, scikit-learn, XGBoost, LightGBM, CatBoost, SHAP, NetworkX |
+| **Testing / Reproducibility** | pytest, deterministic random seeds |
 
 ---
 
@@ -212,8 +182,6 @@ The dashboard features the following interactive panes:
 
 ```text
 secure-shield/
-├── backend/                  # FastAPI Application
-├── frontend/                 # React UI Dashboard
 ├── src/secureshield/         # Core Research Pipeline
 │   ├── detection/            # ML Classification
 │   ├── explainability/       # SHAP implementations
@@ -239,19 +207,11 @@ secure-shield/
 git clone https://github.com/CHAITHANYAHEGDE/SecureShield.git
 cd SecureShield
 
-# 1. Pipeline & Backend Setup
+# Pipeline Setup
 python3 -m venv venv
 source venv/bin/activate
 pip install .
 export PYTHONPATH=src
-export SECURESHIELD_FRONTEND_URL="http://localhost:3000"
-cd backend
-uvicorn main:app --reload --port 8000
-
-# 2. Frontend Setup (In a new terminal)
-cd frontend
-npm install
-npm run dev -- --port 3000
 ```
 
 ---
@@ -269,24 +229,6 @@ Read the formal validation report here: [RESEARCH_VALIDATION_REPORT.md](RESEARCH
 
 ---
 
-## Security
-
-See [SECURITY_AUDIT.md](SECURITY_AUDIT.md).
-
-Current application scope is **local/conference/demo oriented**. Public internet deployment requires additional authentication (JWT/OAuth) and abuse protection (Redis Rate Limiting). Do not expose the API openly without an API gateway.
-
----
-
-## Deployment
-
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
-
-Configurations are provided for cloud services (Render, Vercel), but the architecture fundamentally distinguishes between:
-*   **LOCAL**: Fully supported.
-*   **CONFERENCE**: Supported via protected network.
-*   **PUBLIC INTERNET**: Unsafe without adding authentication.
-
----
 
 ## Scientific Limitations
 
