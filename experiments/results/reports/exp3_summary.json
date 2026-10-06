@@ -1,0 +1,9 @@
+{
+    "Evaluation_Type": "Controlled Simulated Forensic Scenario",
+    "Limitation": "CIC-MalMem-2022 lacks native forensic streams. Simulated derived events were used. No TN/FN sampled.",
+    "Tested_Subset_Size": 10,
+    "ML_Only_FPs_Sampled": 0,
+    "SecureShield_Actionable_FPs": 0,
+    "ML_Only_TPs_Sampled": 10,
+    "SecureShield_Actionable_TPs": 0
+}

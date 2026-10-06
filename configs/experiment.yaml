@@ -1,0 +1,234 @@
+# =============================================================================
+# SecureShield Master Experiment Configuration
+# Do NOT hardcode dataset paths — use environment variables or CLI overrides
+# =============================================================================
+
+project:
+  name: "SecureShield"
+  version: "0.1.0"
+  seed: 42
+  description: "Intelligent Malware Analysis and Incident Correlation Framework"
+
+# ─── Data Pipeline ────────────────────────────────────────────────────────────
+data:
+  # Set via CLI: --dataset-path or SECURESHIELD_DATASET env var
+  raw_csv: "${SECURESHIELD_DATASET:data/raw/MalMem2022_Binary_Clean.csv}"
+  processed_dir: "data/processed"
+  samples_dir: "data/samples"
+
+  # CIC-MalMem-2022 known column structure
+  label_column: "Class"
+  # Columns that represent target leakage and must be dropped
+  leakage_columns:
+    - "Category"
+    - "Filename"
+
+  # 14 high-impact Volatility features (validated in existing research)
+  selected_features:
+    - "handles.ndesktop"
+    - "svcscan.nservices"
+    - "pslist.nppid"
+    - "malfind.commitCharge"
+    - "handles.nsemaphore"
+    - "svcscan.nactive"
+    - "ldrmodules.not_in_load"
+    - "ldrmodules.not_in_load_avg"
+    - "pslist.avg_handlers"
+    - "handles.nsection"
+    - "dlllist.avg_dlls_per_proc"
+    - "handles.nmutant"
+    - "handles.nkey"
+    - "malfind.ninjections"
+
+  split:
+    test_size: 0.20
+    val_size: 0.10   # fraction of train for validation
+    stratify: true
+    random_state: 42
+
+  preprocessing:
+    scaler: "RobustScaler"
+    fill_na_strategy: "zero"
+    remove_zero_variance: true
+    check_duplicates: true
+
+# ─── Machine Learning ──────────────────────────────────────────────────────────
+detection:
+  models:
+    - name: "LogisticRegression"
+      enabled: true
+      params:
+        max_iter: 1000
+        random_state: 42
+    - name: "RandomForest"
+      enabled: true
+      params:
+        n_estimators: 100
+        random_state: 42
+        n_jobs: -1
+    - name: "ExtraTrees"
+      enabled: true
+      params:
+        n_estimators: 100
+        random_state: 42
+        n_jobs: -1
+    - name: "XGBoost"
+      enabled: true
+      params:
+        n_estimators: 100
+        random_state: 42
+        eval_metric: "logloss"
+        n_jobs: -1
+    - name: "LightGBM"
+      enabled: true
+      params:
+        n_estimators: 100
+        random_state: 42
+        n_jobs: 1
+        verbose: -1
+    - name: "CatBoost"
+      enabled: true
+      params:
+        iterations: 100
+        random_seed: 42
+        verbose: 0
+    - name: "SVM"
+      enabled: false
+      params:
+        kernel: "rbf"
+        probability: true
+        random_state: 42
+    - name: "StackingEnsemble"
+      enabled: true
+
+  cross_validation:
+    enabled: true
+    n_folds: 5
+    scoring: "roc_auc"
+
+  metrics:
+    - accuracy
+    - precision_macro
+    - recall_macro
+    - f1_macro
+    - f1_weighted
+    - roc_auc
+    - pr_auc
+    - mcc
+    - brier_score
+
+# ─── Hyperparameter Optimization ──────────────────────────────────────────────
+hpo:
+  enabled: true
+  framework: "optuna"
+  n_trials: 30
+  timeout_sec: 600
+  primary_model: "LightGBM"
+  scoring: "roc_auc"
+  seed: 42
+
+# ─── Explainability ───────────────────────────────────────────────────────────
+explainability:
+  shap:
+    enabled: true
+    max_samples: 500
+    explainer_type: "TreeExplainer"
+  lime:
+    enabled: true
+    n_samples: 500
+  output_format: "json"    # json output feeds downstream correlation
+
+# ─── Forensics ────────────────────────────────────────────────────────────────
+forensics:
+  # Feature → forensic event type mapping for CIC-MalMem-2022
+  feature_event_map:
+    "malfind.ninjections": "process_injection"
+    "malfind.commitCharge": "memory_commit"
+    "ldrmodules.not_in_load": "dll_hiding"
+    "ldrmodules.not_in_load_avg": "dll_hiding"
+    "pslist.nppid": "process_creation"
+    "psxview.not_in_pslist": "process_hiding"
+    "handles.ndesktop": "desktop_access"
+    "svcscan.nservices": "service_creation"
+    "svcscan.nactive": "service_manipulation"
+    "callbacks.ncallbacks": "kernel_callback"
+
+  synthetic_events:
+    # IMPORTANT: These are SYNTHETIC events generated from ML features.
+    # They are NOT real-world endpoint telemetry. Clearly labeled in all outputs.
+    generate: true
+    label: "SYNTHETIC_FROM_ML_FEATURES"
+
+# ─── Correlation Engine ────────────────────────────────────────────────────────
+correlation:
+  weights:
+    # These weights are HEURISTIC. Not experimentally validated as optimal.
+    temporal: 0.20
+    process_relationship: 0.25
+    file_relationship: 0.15
+    network_relationship: 0.15
+    evidence_confidence: 0.15
+    ml_confidence: 0.10
+
+  temporal_window_seconds: 30
+  min_correlation_score: 0.30
+  max_events_per_incident: 50
+
+# ─── MITRE ATT&CK ─────────────────────────────────────────────────────────────
+mitre:
+  # Mapping requires behavioral evidence, NOT just "malware" label
+  require_evidence: true
+  min_confidence: 0.50
+  atlas_version: "v14.1"
+
+# ─── Risk Scoring ─────────────────────────────────────────────────────────────
+risk:
+  # HEURISTIC scoring model — not experimentally validated
+  model: "heuristic_v1"
+  thresholds:
+    low: 30
+    medium: 55
+    high: 75
+    critical: 90
+
+  signals:
+    ml_malicious: 20
+    forensic_evidence: 15
+    process_chain: 15
+    external_network: 10
+    att_ck_technique: 8
+    persistence_indicator: 12
+    command_execution: 10
+    payload_execution: 10
+
+# ─── Output Paths ─────────────────────────────────────────────────────────────
+outputs:
+  models_dir: "models"
+  figures_dir: "experiments/results/figures"
+  tables_dir: "experiments/results/tables"
+  reports_dir: "experiments/results/reports"
+  logs_dir: "logs"
+
+# ─── Experiments ──────────────────────────────────────────────────────────────
+experiments:
+  ablation:
+    enabled: true
+    correlation_signals:
+      - name: "temporal_only"
+        weights: {temporal: 1.0, process_relationship: 0.0, file_relationship: 0.0, network_relationship: 0.0, evidence_confidence: 0.0, ml_confidence: 0.0}
+      - name: "temporal_process"
+        weights: {temporal: 0.5, process_relationship: 0.5, file_relationship: 0.0, network_relationship: 0.0, evidence_confidence: 0.0, ml_confidence: 0.0}
+      - name: "temporal_process_file"
+        weights: {temporal: 0.4, process_relationship: 0.35, file_relationship: 0.25, network_relationship: 0.0, evidence_confidence: 0.0, ml_confidence: 0.0}
+      - name: "temporal_process_file_network"
+        weights: {temporal: 0.3, process_relationship: 0.3, file_relationship: 0.2, network_relationship: 0.2, evidence_confidence: 0.0, ml_confidence: 0.0}
+      - name: "full_correlation"
+        weights: {temporal: 0.20, process_relationship: 0.25, file_relationship: 0.15, network_relationship: 0.15, evidence_confidence: 0.15, ml_confidence: 0.10}
+
+  comparison:
+    enabled: true
+    experiments:
+      - "A_ml_only"
+      - "B_forensics_only"
+      - "C_ml_forensic_correlation"
+      - "D_ml_forensic_attck"

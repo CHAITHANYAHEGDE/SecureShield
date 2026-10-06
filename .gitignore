@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Datasets - never commit
+data/raw/*.csv
+data/raw/*.parquet
+data/raw/*.json
+data/processed/*.csv
+data/processed/*.parquet
+data/processed/*.pkl
+data/processed/*.npy
+data/processed/*.npz
+# Exception: keep READMEs
+!data/raw/README.md
+!data/processed/README.md
+!data/samples/README.md
+
+# Models - large artifacts
+models/*.pkl
+models/*.joblib
+models/*.cbm
+models/*.txt
+models/*.json
+models/*.h5
+# Keep metadata JSON  (small)
+!models/metadata*.json
+
+# Experiment results (commit selectively)
+# We want to keep the final tables and reports for reproducibility
+!experiments/results/tables/*.csv
+!experiments/results/reports/*.json
+
+# Node
+node_modules/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Optuna / CatBoost
+catboost_info/
+.optuna/
+optuna.db
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Secrets (never commit)
+.env
+*.env
+secrets.yaml
+api_keys.*
+
+# Logs
+logs/*.log
+*.log
+
+# Test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# MyPy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/

@@ -1,0 +1,528 @@
+======================================================================
+ATTACK TIMELINE
+======================================================================
+
+2026-10-06 05:51:12  Step 01  [HIGH] [SYNTHETIC]
+  Memory injection detected: 4 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-BDC4B68D | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:12  Step 02  [HIGH] [SYNTHETIC]
+  Memory injection detected: 3 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-69DF4920 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:12  Step 03  [HIGH]
+  ML classification: MALICIOUS (confidence: 100.0%) by RandomForest
+  Event ID: EVT-1B775B4E | Evidence: ML-7
+
+2026-10-06 05:51:12  Step 04  [HIGH]
+  ML classification: MALICIOUS (confidence: 100.0%) by RandomForest
+  Event ID: EVT-0AC34825 | Evidence: ML-1
+
+2026-10-06 05:51:12  Step 05  [HIGH] [SYNTHETIC]
+  Memory injection detected: 6 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-382BE102 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:12  Step 06  [HIGH]
+  ML classification: MALICIOUS (confidence: 100.0%) by RandomForest
+  Event ID: EVT-A5CF961D | Evidence: ML-0
+
+2026-10-06 05:51:12  Step 07  [HIGH]
+  ML classification: MALICIOUS (confidence: 100.0%) by RandomForest
+  Event ID: EVT-654DBD00 | Evidence: ML-8
+
+2026-10-06 05:51:12  Step 08  [HIGH] [SYNTHETIC]
+  Memory injection detected: 3 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-E4447E03 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:12  Step 09  [HIGH] [SYNTHETIC]
+  Memory injection detected: 3 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-0B0E1991 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:12  Step 10  [HIGH]
+  ML classification: MALICIOUS (confidence: 100.0%) by RandomForest
+  Event ID: EVT-FCD76316 | Evidence: ML-9
+
+2026-10-06 05:51:13  Step 11  [LOW] [SYNTHETIC]
+  Memory injection detected: 0 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-73F36236 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:13  Step 12  [LOW] [SYNTHETIC]
+  Memory injection detected: 0 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-00853226 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:13  Step 13  [LOW] [SYNTHETIC]
+  Memory injection detected: 0 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-258EEDB5 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:13  Step 14  [LOW] [SYNTHETIC]
+  Memory injection detected: 0 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-1495EE4D | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:13  Step 15  [LOW] [SYNTHETIC]
+  Memory injection detected: 0 injection(s) observed (commit charge: unknown)
+  Event ID: EVT-CAD55112 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:14  Step 16  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=3.0
+  Event ID: EVT-6E5921A7 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:14  Step 17  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=3.0
+  Event ID: EVT-F7DC0FBE | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:14  Step 18  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=4.0
+  Event ID: EVT-F3259E83 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:14  Step 19  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=3.0
+  Event ID: EVT-B4291D8B | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:14  Step 20  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=6.0
+  Event ID: EVT-11320F0C | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:15  Step 21  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=18.0
+  Event ID: EVT-CF2E472D | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:15  Step 22  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=18.0
+  Event ID: EVT-B83B13E7 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:15  Step 23  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=18.0
+  Event ID: EVT-0DC0649B | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:15  Step 24  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=36.0
+  Event ID: EVT-B58A352F | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:15  Step 25  [LOW] [SYNTHETIC]
+  Suspicious memory commit: charge=24.0
+  Event ID: EVT-1C45C603 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:16  Step 26  [MEDIUM] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load=44.0 (modules not in expected lists)
+  Event ID: EVT-BDC9E2C3 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:16  Step 27  [MEDIUM] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load=47.0 (modules not in expected lists)
+  Event ID: EVT-0E6DBCDA | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:16  Step 28  [MEDIUM] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load=49.0 (modules not in expected lists)
+  Event ID: EVT-1F87EF40 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:16  Step 29  [MEDIUM] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load=44.0 (modules not in expected lists)
+  Event ID: EVT-A2D3190D | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:16  Step 30  [MEDIUM] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load=58.0 (modules not in expected lists)
+  Event ID: EVT-68328FBE | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:17  Step 31  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init=82.0 (modules not in expected lists)
+  Event ID: EVT-AF71B83E | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:17  Step 32  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init=90.0 (modules not in expected lists)
+  Event ID: EVT-87F0B114 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:17  Step 33  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init=82.0 (modules not in expected lists)
+  Event ID: EVT-C7904798 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:17  Step 34  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init=86.0 (modules not in expected lists)
+  Event ID: EVT-D80060B8 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:17  Step 35  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init=101.0 (modules not in expected lists)
+  Event ID: EVT-3EC1C970 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:18  Step 36  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem=44.0 (modules not in expected lists)
+  Event ID: EVT-239147E5 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:18  Step 37  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem=58.0 (modules not in expected lists)
+  Event ID: EVT-64E9E659 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:18  Step 38  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem=49.0 (modules not in expected lists)
+  Event ID: EVT-A3F2821C | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:18  Step 39  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem=47.0 (modules not in expected lists)
+  Event ID: EVT-3160551A | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:18  Step 40  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem=44.0 (modules not in expected lists)
+  Event ID: EVT-DE6FF629 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:19  Step 41  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-E739AB48 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:19  Step 42  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-B59B45A2 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:19  Step 43  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-DB7036CF | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:19  Step 44  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-6B2B1441 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:19  Step 45  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_load_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-FC90D13B | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:20  Step 46  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init_avg=0.1 (modules not in expected lists)
+  Event ID: EVT-12750B61 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:20  Step 47  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init_avg=0.1 (modules not in expected lists)
+  Event ID: EVT-EB6F577A | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:20  Step 48  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init_avg=0.1 (modules not in expected lists)
+  Event ID: EVT-CE2A4E4C | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:20  Step 49  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init_avg=0.1 (modules not in expected lists)
+  Event ID: EVT-ED07B593 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:20  Step 50  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_init_avg=0.1 (modules not in expected lists)
+  Event ID: EVT-7A218959 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:21  Step 51  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-D0D990F1 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:21  Step 52  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-A33E5033 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:21  Step 53  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-A2B11BC8 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:21  Step 54  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-7D76AF3E | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:21  Step 55  [LOW] [SYNTHETIC]
+  DLL hiding indicator: ldrmodules.not_in_mem_avg=0.0 (modules not in expected lists)
+  Event ID: EVT-473C8C52 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:22  Step 56  [LOW] [SYNTHETIC]
+  Process chain: unknown → unknown
+  Event ID: EVT-22F03ED9 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:22  Step 57  [LOW] [SYNTHETIC]
+  Process chain: unknown → unknown
+  Event ID: EVT-C080F439 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:22  Step 58  [LOW] [SYNTHETIC]
+  Process chain: unknown → unknown
+  Event ID: EVT-5693D075 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:22  Step 59  [LOW] [SYNTHETIC]
+  Process chain: unknown → unknown
+  Event ID: EVT-DFBDAC33 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:22  Step 60  [LOW] [SYNTHETIC]
+  Process chain: unknown → unknown
+  Event ID: EVT-D7132AF4 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:23  Step 61  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-2C8DF3ED | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:23  Step 62  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-3E70121E | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:23  Step 63  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-6929E5AE | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:23  Step 64  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-9CE63B69 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:23  Step 65  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-3BF22480 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:24  Step 66  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-108F100C | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:24  Step 67  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-609F9F39 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:24  Step 68  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-6A6EDC03 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:24  Step 69  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-2E8AAED8 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:24  Step 70  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-46A291DE | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:25  Step 71  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-A301B6C5 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:25  Step 72  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-A9DCC0F9 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:25  Step 73  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-5CACB5EF | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:25  Step 74  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-D051F09E | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:25  Step 75  [LOW] [SYNTHETIC]
+  Process started: unknown
+  Event ID: EVT-180406B1 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:26  Step 76  [LOW] [SYNTHETIC]
+  Desktop object access detected (potential screen capture or UI hijack)
+  Event ID: EVT-9A5F1CF0 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:26  Step 77  [CRITICAL] [SYNTHETIC]
+  Process hiding detected: process not visible in standard process list (psxview anomaly)
+  Event ID: EVT-DF854677 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:26  Step 78  [LOW] [SYNTHETIC]
+  Desktop object access detected (potential screen capture or UI hijack)
+  Event ID: EVT-CD356DBA | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:26  Step 79  [CRITICAL] [SYNTHETIC]
+  Process hiding detected: process not visible in standard process list (psxview anomaly)
+  Event ID: EVT-16F33089 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:26  Step 80  [CRITICAL] [SYNTHETIC]
+  Process hiding detected: process not visible in standard process list (psxview anomaly)
+  Event ID: EVT-5F3B2DB9 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:27  Step 81  [LOW] [SYNTHETIC]
+  Service creation/registration: 389 services in memory
+  Event ID: EVT-EDF779AE | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:27  Step 82  [LOW] [SYNTHETIC]
+  Process hiding detected: process not visible in standard process list (psxview anomaly)
+  Event ID: EVT-6F99A168 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:27  Step 83  [LOW] [SYNTHETIC]
+  Process hiding detected: process not visible in standard process list (psxview anomaly)
+  Event ID: EVT-37CFD3B7 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:27  Step 84  [LOW] [SYNTHETIC]
+  Service creation/registration: 389 services in memory
+  Event ID: EVT-529FA6C2 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:27  Step 85  [LOW] [SYNTHETIC]
+  Process hiding detected: process not visible in standard process list (psxview anomaly)
+  Event ID: EVT-ACAF4357 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:28  Step 86  [LOW] [SYNTHETIC]
+  Service manipulation: 119 active services
+  Event ID: EVT-A5EF77AE | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:28  Step 87  [LOW] [SYNTHETIC]
+  Service manipulation: 122 active services
+  Event ID: EVT-F9CA54DA | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:28  Step 88  [LOW] [SYNTHETIC]
+  Desktop object access detected (potential screen capture or UI hijack)
+  Event ID: EVT-C2EEF7C2 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:28  Step 89  [LOW] [SYNTHETIC]
+  Desktop object access detected (potential screen capture or UI hijack)
+  Event ID: EVT-3F73EDA2 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:28  Step 90  [LOW] [SYNTHETIC]
+  Desktop object access detected (potential screen capture or UI hijack)
+  Event ID: EVT-D920BD82 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:29  Step 91  [LOW] [SYNTHETIC]
+  Service creation/registration: 389 services in memory
+  Event ID: EVT-7494309E | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:29  Step 92  [LOW] [SYNTHETIC]
+  Service creation/registration: 389 services in memory
+  Event ID: EVT-4E6A3AE9 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:29  Step 93  [LOW] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-E1383E65 | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:29  Step 94  [LOW] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-20B8BA2D | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:29  Step 95  [LOW] [SYNTHETIC]
+  Service creation/registration: 389 services in memory
+  Event ID: EVT-22B168DA | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:30  Step 96  [HIGH] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-0A315C8E | Evidence: CIC-ROW-000007
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:30  Step 97  [LOW] [SYNTHETIC]
+  Service manipulation: 121 active services
+  Event ID: EVT-2019FAA1 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:30  Step 98  [HIGH] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-739740B1 | Evidence: CIC-ROW-000001
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:30  Step 99  [LOW] [SYNTHETIC]
+  Service manipulation: 122 active services
+  Event ID: EVT-DF22298D | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:30  Step 100  [LOW] [SYNTHETIC]
+  Service manipulation: 121 active services
+  Event ID: EVT-8FAD0FB9 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:31  Step 101  [LOW] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-8AA40EE2 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:31  Step 102  [LOW] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-89C24A23 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:31  Step 103  [LOW] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-3827A287 | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:32  Step 104  [HIGH] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-46762896 | Evidence: CIC-ROW-000008
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:32  Step 105  [HIGH] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-FA456C9E | Evidence: CIC-ROW-000000
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.
+
+2026-10-06 05:51:32  Step 106  [HIGH] [SYNTHETIC]
+  Kernel callback registration detected (rootkit indicator)
+  Event ID: EVT-244A55A6 | Evidence: CIC-ROW-000009
+  ⚠ SYNTHETIC: Derived from aggregate Volatility ML features. NOT real endpoint telemetry.

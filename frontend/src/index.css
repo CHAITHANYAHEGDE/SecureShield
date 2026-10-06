@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/instrument-sans';
+@import '@fontsource-variable/jetbrains-mono';
+
+@theme {
+  --color-base: #0E1013;
+  --color-surface: #161A1F;
+  --color-hairline: #262C34;
+  --color-accent: #F2B84B;
+  --color-severity-low: #4FA36B;
+  --color-severity-medium: #D9A441;
+  --color-severity-high: #E2793B;
+  --color-severity-critical: #D64545;
+  --font-display: "Fraunces Variable", serif;
+  --font-sans: "Instrument Sans Variable", sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
+  --tracking-widest: .08em;
+}
+
+@layer base {
+  body {
+    @apply bg-base text-gray-300 font-sans antialiased;
+    color: #d1d5db;
+  }
+}
+
+@layer components {
+  .case-card {
+    @apply bg-surface border border-hairline rounded-lg overflow-hidden;
+  }
+  
+  .mono-label {
+    @apply font-mono text-[11px] uppercase tracking-widest text-gray-500;
+  }
+  
+  .provenance-stamp {
+    @apply font-mono text-[10px] uppercase px-1.5 py-0.5 rounded border;
+  }
+  
+  .stamp-measured {
+    @apply border-teal-600 text-teal-400 bg-teal-950/30;
+  }
+  
+  .stamp-derived {
+    @apply border-blue-600 text-blue-400 bg-blue-950/30;
+  }
+  
+  .stamp-simulated {
+    @apply border-fuchsia-600 border-dashed text-fuchsia-400 bg-fuchsia-950/30;
+  }
+  
+  .accent-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent;
+  }
+}
