@@ -1,136 +1,129 @@
 import React from 'react';
 import type { AnalysisResponse } from '../api';
 import { ProvenanceBadge } from './ProvenanceBadge';
-import { AlertOctagon, CheckSquare } from 'lucide-react';
+import { ShieldAlert, Crosshair, Search, RotateCcw, AlertTriangle } from 'lucide-react';
 
 interface Props {
   analysis: AnalysisResponse;
 }
 
 export const RiskTab: React.FC<Props> = ({ analysis }) => {
-  const getSeverityColor = (severity: string) => {
-    switch (severity) {
-      case 'CRITICAL': return 'text-red-500 bg-red-500/10 border-red-500/20';
-      case 'HIGH': return 'text-amber-500 bg-amber-500/10 border-amber-500/20';
-      case 'MEDIUM': return 'text-yellow-500 bg-yellow-500/10 border-yellow-500/20';
-      case 'LOW': return 'text-green-500 bg-green-500/10 border-green-500/20';
-      default: return 'text-gray-400 bg-gray-500/10 border-gray-500/20';
-    }
-  };
+  const isHighRisk = analysis.risk.score >= 70;
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-3 gap-6">
-         {/* Risk Score Summary */}
-         <div className="col-span-1 bg-surface border border-hairline p-6 rounded flex flex-col justify-center items-center text-center">
-            <h3 className="mono-label text-gray-400 mb-6">Aggregated Risk Score</h3>
-            
-            <div className="relative mb-6">
-               {/* Just a circular visual representation */}
-               <svg className="w-32 h-32 transform -rotate-90">
-                  <circle cx="64" cy="64" r="60" stroke="currentColor" strokeWidth="4" fill="transparent" className="text-base" />
-                  <circle 
-                    cx="64" 
-                    cy="64" 
-                    r="60" 
-                    stroke="currentColor" 
-                    strokeWidth="4" 
-                    fill="transparent" 
-                    strokeDasharray={377} 
-                    strokeDashoffset={377 - (377 * analysis.risk.score) / 100} 
-                    className={
-                      analysis.risk.severity === 'CRITICAL' ? 'text-red-500' :
-                      analysis.risk.severity === 'HIGH' ? 'text-amber-500' :
-                      analysis.risk.severity === 'MEDIUM' ? 'text-yellow-500' : 'text-green-500'
-                    }
-                  />
-               </svg>
-               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                 <span className="text-3xl font-display font-bold text-white">{analysis.risk.score}</span>
-               </div>
-            </div>
-            
-            <div className={`px-4 py-1.5 rounded-full border font-bold text-sm tracking-wider uppercase ${getSeverityColor(analysis.risk.severity)}`}>
-               {analysis.risk.severity} RISK
-            </div>
-            
-            <div className="mt-6 flex justify-center">
-               <ProvenanceBadge provenance={analysis.risk.provenance} />
-            </div>
-         </div>
-         
-         {/* Risk Factors */}
-         <div className="col-span-2 bg-surface border border-hairline p-6 rounded">
-            <h3 className="mono-label text-gray-400 mb-4 border-b border-hairline pb-2">Contributing Factors</h3>
-            
+    <div className="space-y-8 animate-in fade-in duration-500">
+      
+      {/* Risk Summary Header */}
+      <div className="flex flex-col md:flex-row gap-8 items-start border-b border-hairline pb-8">
+        <div className="flex-shrink-0 flex flex-col items-center justify-center p-6 bg-surface border border-hairline rounded min-w-[200px]">
+          <div className="mono-label text-gray-400 mb-4">THREAT SCORE</div>
+          <div className={`text-6xl font-display font-bold tracking-tighter ${isHighRisk ? 'text-severity-critical' : 'text-severity-medium'}`}>
+            {analysis.risk.score}
+          </div>
+          <div className="text-[10px] font-mono text-gray-500 mt-2 tracking-widest uppercase">{analysis.risk.severity} SEVERITY</div>
+          <div className="mt-4"><ProvenanceBadge provenance={analysis.risk.provenance} /></div>
+        </div>
+        
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-3 text-gray-300">
+            <AlertTriangle className="w-5 h-5 text-accent" />
+            <h3 className="mono-label text-gray-300 m-0">Critical Threat Factors</h3>
+          </div>
+          <div className="bg-surface border border-hairline rounded p-5">
             {(!analysis.risk.factors || analysis.risk.factors.length === 0) ? (
-              <div className="text-gray-500 font-mono italic mt-8 text-center">No specific risk factors identified.</div>
+              <div className="text-gray-500 font-mono italic">No specific threat factors articulated.</div>
             ) : (
-              <ul className="space-y-4 mt-4">
+              <ul className="space-y-3">
                 {analysis.risk.factors.map((factor, i) => (
-                  <li key={i} className="flex items-start">
-                    <AlertOctagon className="w-5 h-5 text-accent mr-3 shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">{factor as unknown as string}</span>
+                  <li key={i} className="flex items-start text-sm text-gray-300 leading-relaxed">
+                    <span className="text-accent font-bold mr-3 shrink-0">→</span>
+                    {factor as unknown as string}
                   </li>
                 ))}
               </ul>
             )}
-         </div>
+          </div>
+        </div>
       </div>
       
-      {/* Response Plan */}
-      <div className="bg-surface border border-hairline p-6 rounded">
-         <h3 className="mono-label text-gray-400 mb-6 border-b border-hairline pb-2">Recommended Response Plan</h3>
-         
-         <div className="grid grid-cols-3 gap-6">
-            <div className="space-y-3">
-               <h4 className="font-mono text-sm font-bold text-amber-500 uppercase tracking-wide">Containment</h4>
-               <ul className="space-y-2">
-                 {analysis.response.containment && analysis.response.containment.length > 0 ? (
-                   analysis.response.containment.map((action, i) => (
-                     <li key={i} className="flex items-start text-sm text-gray-300 bg-base/50 p-2 rounded border border-hairline">
-                       <CheckSquare className="w-4 h-4 text-gray-500 mr-2 shrink-0 mt-0.5" />
-                       {action}
-                     </li>
-                   ))
-                 ) : (
-                   <li className="text-sm font-mono text-gray-500 italic">No containment actions.</li>
-                 )}
-               </ul>
+      {/* Playbook */}
+      <div>
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="mono-label text-gray-300">Active Incident Playbook</h3>
+          <span className="text-[10px] font-mono bg-accent/20 text-accent border border-accent/30 px-3 py-1 uppercase tracking-widest rounded">
+            Execution Required
+          </span>
+        </div>
+        
+        <div className="space-y-4">
+          
+          {/* Containment Phase */}
+          <div className="bg-surface border border-hairline rounded overflow-hidden">
+            <div className="bg-base border-b border-hairline px-6 py-4 flex items-center gap-3">
+              <Crosshair className="w-5 h-5 text-red-500" />
+              <h4 className="font-display font-bold text-white uppercase tracking-wider text-sm">Phase 1: Containment</h4>
             </div>
-            
-            <div className="space-y-3">
-               <h4 className="font-mono text-sm font-bold text-blue-400 uppercase tracking-wide">Investigation</h4>
-               <ul className="space-y-2">
-                 {analysis.response.investigation && analysis.response.investigation.length > 0 ? (
-                   analysis.response.investigation.map((action, i) => (
-                     <li key={i} className="flex items-start text-sm text-gray-300 bg-base/50 p-2 rounded border border-hairline">
-                       <CheckSquare className="w-4 h-4 text-gray-500 mr-2 shrink-0 mt-0.5" />
-                       {action}
-                     </li>
-                   ))
-                 ) : (
-                   <li className="text-sm font-mono text-gray-500 italic">No investigation actions.</li>
-                 )}
-               </ul>
+            <div className="p-6">
+              <ul className="space-y-3">
+                {analysis.response.containment && analysis.response.containment.length > 0 ? (
+                  analysis.response.containment.map((action, i) => (
+                    <li key={i} className="flex items-start group">
+                      <div className="w-4 h-4 border border-gray-500 rounded-sm mt-0.5 mr-4 flex-shrink-0 group-hover:border-accent cursor-pointer transition-colors"></div>
+                      <span className="text-sm text-gray-300 font-mono">{action}</span>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-sm font-mono text-gray-600 italic">No containment protocols prescribed.</li>
+                )}
+              </ul>
             </div>
-            
-            <div className="space-y-3">
-               <h4 className="font-mono text-sm font-bold text-green-500 uppercase tracking-wide">Recovery</h4>
-               <ul className="space-y-2">
-                 {analysis.response.recovery && analysis.response.recovery.length > 0 ? (
-                   analysis.response.recovery.map((action, i) => (
-                     <li key={i} className="flex items-start text-sm text-gray-300 bg-base/50 p-2 rounded border border-hairline">
-                       <CheckSquare className="w-4 h-4 text-gray-500 mr-2 shrink-0 mt-0.5" />
-                       {action}
-                     </li>
-                   ))
-                 ) : (
-                   <li className="text-sm font-mono text-gray-500 italic">No recovery actions.</li>
-                 )}
-               </ul>
+          </div>
+          
+          {/* Investigation Phase */}
+          <div className="bg-surface border border-hairline rounded overflow-hidden">
+            <div className="bg-base border-b border-hairline px-6 py-4 flex items-center gap-3">
+              <Search className="w-5 h-5 text-amber-500" />
+              <h4 className="font-display font-bold text-white uppercase tracking-wider text-sm">Phase 2: Investigation & Root Cause</h4>
             </div>
-         </div>
+            <div className="p-6">
+              <ul className="space-y-3">
+                {analysis.response.investigation && analysis.response.investigation.length > 0 ? (
+                  analysis.response.investigation.map((action, i) => (
+                    <li key={i} className="flex items-start group">
+                      <div className="w-4 h-4 border border-gray-500 rounded-sm mt-0.5 mr-4 flex-shrink-0 group-hover:border-accent cursor-pointer transition-colors"></div>
+                      <span className="text-sm text-gray-300 font-mono">{action}</span>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-sm font-mono text-gray-600 italic">No investigation protocols prescribed.</li>
+                )}
+              </ul>
+            </div>
+          </div>
+          
+          {/* Recovery Phase */}
+          <div className="bg-surface border border-hairline rounded overflow-hidden">
+            <div className="bg-base border-b border-hairline px-6 py-4 flex items-center gap-3">
+              <RotateCcw className="w-5 h-5 text-green-500" />
+              <h4 className="font-display font-bold text-white uppercase tracking-wider text-sm">Phase 3: Recovery & Hardening</h4>
+            </div>
+            <div className="p-6">
+              <ul className="space-y-3">
+                {analysis.response.recovery && analysis.response.recovery.length > 0 ? (
+                  analysis.response.recovery.map((action, i) => (
+                    <li key={i} className="flex items-start group">
+                      <div className="w-4 h-4 border border-gray-500 rounded-sm mt-0.5 mr-4 flex-shrink-0 group-hover:border-accent cursor-pointer transition-colors"></div>
+                      <span className="text-sm text-gray-300 font-mono">{action}</span>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-sm font-mono text-gray-600 italic">No recovery protocols prescribed.</li>
+                )}
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );

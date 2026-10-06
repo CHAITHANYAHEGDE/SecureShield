@@ -4,14 +4,15 @@
 @import '@fontsource-variable/jetbrains-mono';
 
 @theme {
-  --color-base: #0E1013;
-  --color-surface: #161A1F;
-  --color-hairline: #262C34;
-  --color-accent: #F2B84B;
-  --color-severity-low: #4FA36B;
-  --color-severity-medium: #D9A441;
-  --color-severity-high: #E2793B;
-  --color-severity-critical: #D64545;
+  --color-base: #0b0c0e;
+  --color-surface: #121417;
+  --color-hairline: #1e2226;
+  --color-accent: #5C94FF;
+  --color-accent-subtle: #2A4068;
+  --color-severity-low: #3E8B58;
+  --color-severity-medium: #C2933C;
+  --color-severity-high: #D36C2F;
+  --color-severity-critical: #C43838;
   --font-display: "Fraunces Variable", serif;
   --font-sans: "Instrument Sans Variable", sans-serif;
   --font-mono: "JetBrains Mono Variable", monospace;
@@ -21,36 +22,36 @@
 @layer base {
   body {
     @apply bg-base text-gray-300 font-sans antialiased;
-    color: #d1d5db;
+    color: #cbd5e1;
   }
 }
 
 @layer components {
   .case-card {
-    @apply bg-surface border border-hairline rounded-lg overflow-hidden;
+    @apply bg-surface border border-hairline overflow-hidden;
   }
   
   .mono-label {
-    @apply font-mono text-[11px] uppercase tracking-widest text-gray-500;
+    @apply font-mono text-[10px] uppercase tracking-widest text-gray-500 font-semibold;
   }
   
   .provenance-stamp {
-    @apply font-mono text-[10px] uppercase px-1.5 py-0.5 rounded border;
+    @apply font-mono text-[9px] uppercase px-1.5 py-0.5 rounded-sm border font-medium tracking-wide;
   }
   
   .stamp-measured {
-    @apply border-teal-600 text-teal-400 bg-teal-950/30;
+    @apply border-emerald-700/50 text-emerald-400 bg-emerald-950/30;
   }
   
   .stamp-derived {
-    @apply border-blue-600 text-blue-400 bg-blue-950/30;
+    @apply border-sky-700/50 text-sky-400 bg-sky-950/30;
   }
   
   .stamp-simulated {
-    @apply border-fuchsia-600 border-dashed text-fuchsia-400 bg-fuchsia-950/30;
+    @apply border-purple-700/50 border-dashed text-purple-400 bg-purple-950/30;
   }
   
   .accent-focus {
-    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent;
+    @apply focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent;
   }
 }
