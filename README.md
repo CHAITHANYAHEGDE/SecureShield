@@ -7,20 +7,51 @@
 ![React](https://img.shields.io/badge/React-19-blue.svg)
 ![Vite](https://img.shields.io/badge/Vite-8-purple.svg)
 
-## Overview
-SecureShield is a machine learning-driven endpoint threat detection and forensic correlation system. It evaluates the robustness and separability of network/endpoint telemetry features using the CIC-MalMem-2022 dataset, and demonstrates how integrating structural forensic relationships (temporal, process, file, network) significantly reduces actionable false positives in SOC environments.
+---
 
-## Research Motivation & Problem Statement
-Machine learning models often achieve near-perfect offline accuracy (e.g., AUC 1.000) on curated benchmark datasets like CIC-MalMem-2022. However, this offline performance frequently relies on dataset-specific feature separability and distributional artifacts rather than true real-world generalization. Simple numerical feature perturbations can drastically degrade ML-only confidence. SecureShield addresses this gap by augmenting ML predictions with a deterministic, multi-dimensional forensic correlation engine.
+## Overview
+
+SecureShield is an evidence-aware Security Operations Center (SOC) analytics platform that bridges the gap between raw machine learning (ML) classification and structural forensic reality.
+
+The core pipeline evaluates incoming endpoints by combining:
+
+`ML Malware Detection` → `SHAP Explainability` → `Forensic Evidence Normalization` → `Event Correlation` → `Incident Timeline Reconstruction` → `Behavioral Analysis` → `MITRE ATT&CK` → `Risk Assessment` → `Response Recommendations`
+
+*Note: SecureShield is a research prototype designed to evaluate correlation logic against ML classification boundaries. It is not a commercial SOC product.*
+
+---
+
+## Why SecureShield?
+
+Traditional ML malware classifiers can produce an accurate binary prediction (Malicious vs. Benign) but do not inherently explain:
+*   What evidence supports the decision?
+*   How do isolated observations relate to one another?
+*   How did the incident unfold chronologically?
+*   Which MITRE ATT&CK behaviors are implicated?
+*   What specific response should follow?
+
+SecureShield addresses this by augmenting offline numerical ML predictions with a deterministic, multi-dimensional forensic correlation engine. By requiring structural evidence to confirm statistical anomalies, SecureShield acts as a noise-reduction filter against ML false positives.
+
+---
 
 ## Key Contributions
-- **Machine Learning Detection**: Extremely precise baseline detection of malicious patterns.
-- **SHAP Explainability**: Interpretable feature importance extraction mapping statistical anomalies to behavioral indicators.
-- **Forensic Normalization & Correlation**: A multi-dimensional graph logic correlating isolated alerts into structured incident clusters.
-- **Attack Timeline & MITRE ATT&CK**: Automated translation of raw alerts into narrative timelines and standard MITRE techniques.
-- **Risk Assessment**: Context-aware risk scoring that filters out low-confidence ML false positives using structural requirements.
+
+1.  **ML Malware Detection**: Precision baseline detection using ensemble methods.
+2.  **SHAP-based Explainability**: Interpretable feature extraction mapping statistical anomalies to indicators.
+3.  **Forensic Evidence Normalization**: Simulated extraction of structural graphs from numerical metrics.
+4.  **Multi-dimensional Event Correlation**: Temporal, Process, File, and Network graph formation.
+5.  **Incident Timeline Reconstruction**: Narrative reconstruction of attack stages.
+6.  **Evidence-constrained MITRE ATT&CK Mapping**: Hard mapping of TTPS based solely on established evidence.
+7.  **Quantitative Risk Assessment**: Context-aware triage scoring.
+8.  **Response Playbook Generation**: Automated remediation instructions.
+9.  **Research Ablation and Robustness Experiments**: Demonstrating the fragility of ML thresholds.
+10. **Provenance-aware Architecture**: Strict tagging of real vs. simulated data.
+
+---
 
 ## System Architecture
+
+![SecureShield Architecture](docs/images/architecture.png)
 
 ```mermaid
 flowchart TD
@@ -42,130 +73,230 @@ flowchart TD
 
 *Note: Forensic stages relying on timestamped telemetry are classified as `SIMULATED` or `DERIVED` natively by the Provenance Engine to preserve scientific integrity.*
 
-## Visual Overview
+---
 
-### 1. Architecture Pipeline
-![SecureShield Architecture](docs/images/architecture.png)
+## End-to-End Workflow
 
-### 2. Research Visuals
-**Model Performance Comparison**
-![Model Performance Comparison](docs/images/model-performance.png)
+`Dataset` → `Preprocessing` → `ML Detection` → `SHAP` → `Forensic Normalization` → `Event Correlation` → `Timeline` → `Behavioral Analysis` → `MITRE ATT&CK` → `Risk` → `Response` → `SOC Dashboard`
 
-**SHAP Feature Importance**
-![SHAP Feature Importance](docs/images/shap-feature-importance.png)
+---
 
-**Robustness Stress Test**
-![Robustness Stress Test](docs/images/robustness-stress-test.png)
+## Research Foundation
 
-**Correlation Dimension Ablation**
-![Correlation Dimension Ablation](docs/images/correlation-ablation.png)
+**Dataset: CIC-MalMem-2022 Binary Classification**
+*   **Original Records**: 58,596
+*   **Benign**: 29,298
+*   **Malware**: 29,298
+*   **Exact Duplicate Rows Removed**: 569
+*   **Final Records**: 58,027
+*   **Original Features**: 52 Volatility-extracted numerical features
+*   **Selected Features**: 14 subset features optimized for separation
+*   **Split**: 80/20 deterministic stratified split
 
-**Controlled Simulated Forensic Scenario**
-![Controlled Simulated Forensic Scenario](docs/images/ml-vs-secureshield.png)
+*SecureShield does not claim the CIC-MalMem-2022 dataset contains native endpoint timelines or network telemetry.*
 
-### 3. Dashboard Screens
-*(Note: Browser screenshot tooling was unavailable during final export; actual dashboard visual captures could not be generated programmatically without fabricating data. Please run the frontend locally to view the interactive dashboard.)*
+---
 
-## Provenance Model
-SecureShield strictly enforces provenance boundaries to avoid confusing benchmark artifacts with native telemetry. Every data point displayed in the dashboard is tagged:
-*   `MEASURED`: Extracted directly from the original dataset features.
-*   `DERIVED`: Calculated via mathematical transformation of measured features.
-*   `SIMULATED`: Synthetically generated for the controlled forensic correlation scenario.
+## Model Evaluation
 
-## Research Results
-
-### 1. Model Performance (Baseline)
 Offline classification tested on the strictly held-out test partition (20%):
 
-| Model               | Accuracy | F1-Macro | ROC AUC | Inference (ms) |
-|---------------------|----------|----------|---------|----------------|
-| LogisticRegression  | 0.9964   | 0.9964   | 0.9998  | 0.33           |
-| RandomForest        | 1.0000   | 1.0000   | 1.0000  | 55.34          |
-| ExtraTrees          | 1.0000   | 1.0000   | 1.0000  | 28.51          |
-| XGBoost             | 1.0000   | 1.0000   | 1.0000  | 2.80           |
-| LightGBM            | 0.9999   | 0.9999   | 1.0000  | 22.32          |
-| CatBoost            | 0.9999   | 0.9999   | 1.0000  | 2.70           |
+| Model | Accuracy | F1-Macro | ROC-AUC | Inference (ms) |
+| :--- | :--- | :--- | :--- | :--- |
+| LogisticRegression | 0.9964 | 0.9964 | 0.9998 | 0.33 |
+| **RandomForest** | **1.0000** | **1.0000** | **1.0000** | **55.34** |
+| ExtraTrees | 1.0000 | 1.0000 | 1.0000 | 28.51 |
+| XGBoost | 1.0000 | 1.0000 | 1.0000 | 2.80 |
+| LightGBM | 0.9999 | 0.9999 | 1.0000 | 22.32 |
+| CatBoost | 0.9999 | 0.9999 | 1.0000 | 2.70 |
 
-**Primary model selected: RandomForest**. Selection was based on a balance of held-out performance, efficiency, explainability (TreeSHAP compatibility), and downstream pipeline integration, rather than simply selecting a model because it achieved perfect accuracy.
+![Model Performance Comparison](docs/images/model-performance.png)
 
-### 2. Feature-Perturbation Robustness Stress Test
-To test the threshold fragility of the ML-only predictions, numerical feature values were perturbed with increasing Gaussian noise.
+**RandomForest** was chosen as the primary model to balance explainability (TreeSHAP compatibility), integration stability, and baseline capability. The perfect test accuracy is an artifact of dataset separability, not an indicator of real-world supremacy.
 
-| Noise Level | Accuracy | F1-Macro |
-|-------------|----------|----------|
-| 0.00        | 1.0000   | 1.0000   |
-| 0.01        | 0.9981   | 0.9981   |
-| 0.05        | 0.7485   | 0.7326   |
-| 0.10        | 0.6371   | 0.5852   |
-| 0.20        | 0.5717   | 0.4869   |
-| 0.30        | 0.5352   | 0.4384   |
-| 0.50        | 0.5060   | 0.3989   |
+---
 
-*Scientific Context: This is an analytical stress test demonstrating numerical threshold sensitivity; it is not evidence of realistic adversarial robustness.*
+## Explainability
 
-### 3. Correlation Dimension Ablation
-Evaluates how different forensic dimensions contribute to structural confidence. The correlation score is a normalized aggregate confidence score for forensic relationships, NOT classification accuracy.
+SHAP (SHapley Additive exPlanations) is utilized to determine exactly which dataset features influenced the numerical classification.
 
-| Configuration | Correlation Score | Edges Formed |
-|---|---|---|
-| ML Only | 0.6333 | 2 |
-| Temporal Only | 0.8032 | 3 |
-| Temporal + Process | 0.4016 | 3 |
-| Temporal + Process + File | 0.3213 | 2 |
-| Full Context | 0.3715 | 3 |
+![SHAP Feature Importance](docs/images/shap-feature-importance.png)
 
-*Scientific Context: A higher score does not automatically mean a better system. Temporal-only scoring is prone to coincidental benign activities. Full Context requires strict multi-dimensional alignment.*
+Features such as `svcscan.nservices` dominate the classification output. This indicates **dataset-specific feature separability / distributional characteristics associated with the CIC-MalMem-2022 collection methodology**, underscoring why structural correlation is required in real environments.
 
-### 4. ML-Only vs SecureShield Comparative Evaluation (Controlled Simulated Forensic Scenario)
-To prove the value of forensic context, we evaluated a sampled subset of incidents.
+---
 
-*   ML-only false positives sampled: 10
-*   SecureShield actionable false positives: 0
-*   ML-only true positives sampled: 10
-*   SecureShield actionable true positives: 10
-*   Subset size: 20
+## Feature-Perturbation Robustness Stress Test
 
-## Scientific Limitations
-*   **Dataset Limitations**: CIC-MalMem-2022 does not contain native endpoint timestamps, file-event streams, or network-event streams. Forensic/timeline events generated from the dataset are described as `DERIVED` or `SIMULATED` and must NOT be presented as genuine endpoint telemetry.
-*   **Generalization**: The 1.000 AUC extremely high offline performance reflects dataset-specific feature separability/distributional characteristics. It does not prove real-world generalization.
-*   **No TN/FN Claims**: The comparative evaluation is a controlled simulated forensic scenario. No True Negative or False Negative reduction claims are made for the entire dataset from this specific experiment, and results have limited external validity.
+To test the fragility of the ML-only predictions, numerical feature values were perturbed with increasing Gaussian noise.
 
-## Local Development & Installation
+![Robustness Stress Test](docs/images/robustness-stress-test.png)
 
-### Running Backend
-```bash
-cd backend
-export PYTHONPATH=../src
-export SECURESHIELD_FRONTEND_URL="http://localhost:3000"
-uvicorn main:app --reload --port 8000
+*Scientific Context: This is an analytical stress test demonstrating numerical threshold sensitivity; it is NOT proof of realistic adversarial robustness.*
+
+---
+
+## Correlation Ablation
+
+Evaluates how different forensic dimensions contribute to structural confidence. 
+
+![Correlation Dimension Ablation](docs/images/correlation-ablation.png)
+
+The normalized forensic relationship confidence score is **NOT** classification accuracy. A higher score does not automatically mean a better system (e.g., Temporal Only produces a high score but is prone to coincidental benign activities).
+
+---
+
+## Controlled Simulated Forensic Scenario
+
+To prove the value of structural forensic context, we evaluated a sampled subset of incidents using SecureShield's logic filter:
+
+![Controlled Simulated Forensic Scenario](docs/images/ml-vs-secureshield.png)
+
+*   **ML-only FP sampled**: 10
+*   **SecureShield actionable FP**: 0
+*   **ML-only TP sampled**: 10
+*   **SecureShield actionable TP**: 10
+*   **Subset size**: 20
+
+*Note: This is a controlled simulated evaluation because CIC-MalMem-2022 does not provide native endpoint event streams. This result cannot be generalized to the entire dataset.*
+
+---
+
+## Provenance Model
+
+| Provenance | Meaning |
+| :--- | :--- |
+| **MEASURED** | Directly measured from available data/system (e.g., CIC-MalMem-2022 values) |
+| **DERIVED** | Computed from existing evidence (e.g., SHAP values, base probabilities) |
+| **SIMULATED** | Controlled/generated for evaluation (e.g., timestamps, simulated structural events) |
+
+This distinction is central to SecureShield’s scientific integrity, preventing the presentation of simulated research scenarios as native collected telemetry.
+
+---
+
+## Dashboard
+
+*(Note: Browser screenshot tooling was unavailable during final export; actual dashboard visual captures could not be generated programmatically. Please run the frontend locally to view the interactive dashboard.)*
+
+The dashboard features the following interactive panes:
+- Dashboard Overview
+- Malware Analysis
+- Forensic Evidence
+- Timeline
+- Incident Graph
+- MITRE ATT&CK
+- Risk & Response
+- Research Results
+
+---
+
+## Technology Stack
+
+| Domain | Technologies |
+| :--- | :--- |
+| **Backend** | Python, FastAPI, Pydantic, scikit-learn, XGBoost, LightGBM, CatBoost, SHAP, NetworkX |
+| **Frontend** | React, TypeScript, Vite, Tailwind CSS v4, React Flow, Recharts, Lucide |
+| **Testing / Reproducibility** | pytest, npm audit, deterministic random seeds |
+
+---
+
+## Repository Structure
+
+```text
+secure-shield/
+├── backend/                  # FastAPI Application
+├── frontend/                 # React UI Dashboard
+├── src/secureshield/         # Core Research Pipeline
+│   ├── detection/            # ML Classification
+│   ├── explainability/       # SHAP implementations
+│   ├── forensics/            # Simulated Log Generators
+│   ├── correlation/          # NetworkX Graph Logic
+│   ├── timeline/             # Temporal Reconstruction
+│   ├── mitre/                # ATT&CK Mapping Rules
+│   ├── risk/                 # Triage Scoring
+│   └── response/             # Playbook Generation
+├── experiments/              # Validated Results & Tables
+├── configs/                  # Hyperparameters & Settings
+├── tests/                    # Provenance & Pipeline Tests
+├── scripts/                  # Visual & Data Generators
+├── docs/                     # Extended Documentation
+└── README.md
 ```
 
-### Running Frontend
+---
+
+## Quick Start
+
 ```bash
+git clone https://github.com/CHAITHANYAHEGDE/SecureShield.git
+cd SecureShield
+
+# 1. Pipeline & Backend Setup
+python3 -m venv venv
+source venv/bin/activate
+pip install .
+export PYTHONPATH=src
+export SECURESHIELD_FRONTEND_URL="http://localhost:3000"
+cd backend
+uvicorn main:app --reload --port 8000
+
+# 2. Frontend Setup (In a new terminal)
 cd frontend
 npm install
 npm run dev -- --port 3000
 ```
 
-### Running Experiments
+---
+
+## Reproduce the Research
+
+See [docs/RESEARCH.md](docs/RESEARCH.md) and [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) for deeper details. 
+
 ```bash
+# Execute the full deterministic research pipeline
 export PYTHONPATH=src
 python3 run_experiments.py
 ```
+Read the formal validation report here: [RESEARCH_VALIDATION_REPORT.md](RESEARCH_VALIDATION_REPORT.md).
 
-### Running Tests
-```bash
-export PYTHONPATH=src
-pytest
-```
+---
 
-## Security Considerations
-SecureShield was hardened for local and conference demonstration environments. The API validates `sample_id` rigorously to prevent path traversals and blocks verbose stack traces. However, it intentionally lacks JWT/session authentication. It is **not safe** to deploy to the open internet without adding reverse-proxy rate-limiting and standard authentication overlays. Refer to `SECURITY_AUDIT.md` for a full breakdown.
+## Security
 
-## Repository Structure
-Please refer to the `docs/` directory for detailed architecture, methodology, and deployment guides:
-*   [ARCHITECTURE.md](docs/ARCHITECTURE.md)
-*   [RESEARCH.md](docs/RESEARCH.md)
-*   [REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md)
-*   [DEPLOYMENT.md](docs/DEPLOYMENT.md)
-*   [DEMO_GUIDE.md](docs/DEMO_GUIDE.md)
+See [SECURITY_AUDIT.md](SECURITY_AUDIT.md).
+
+Current application scope is **local/conference/demo oriented**. Public internet deployment requires additional authentication (JWT/OAuth) and abuse protection (Redis Rate Limiting). Do not expose the API openly without an API gateway.
+
+---
+
+## Deployment
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+Configurations are provided for cloud services (Render, Vercel), but the architecture fundamentally distinguishes between:
+*   **LOCAL**: Fully supported.
+*   **CONFERENCE**: Supported via protected network.
+*   **PUBLIC INTERNET**: Unsafe without adding authentication.
+
+---
+
+## Scientific Limitations
+
+1.  **CIC-MalMem-2022 lacks native endpoint timestamps/file/network streams.**
+2.  **Forensic/timeline events are derived/simulated where applicable.**
+3.  **Controlled forensic evaluation has limited external validity.**
+4.  **Feature perturbation is an analytical stress test.**
+5.  **Very high offline performance does not establish real-world generalization.**
+6.  **Dataset-specific feature separability may not transfer to other datasets/environments.**
+
+---
+
+## Future Work
+
+*   Real endpoint telemetry ingestion via Elastic/Splunk APIs.
+*   Live event stream processing.
+*   Broader external dataset evaluations (e.g., custom detonations).
+*   Calibrated risk models utilizing Bayesian logic.
+*   Authentication and multi-user deployment structures.
+*   Rate limiting / abuse protection implementation.
+*   Expanded MITRE ATT&CK technique coverage.
