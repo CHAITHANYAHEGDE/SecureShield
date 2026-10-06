@@ -20,6 +20,11 @@ This script will sequentially:
 5. Execute Experiment 2: Correlation Ablation.
 6. Execute Experiment 3: Comparative Stats (10 TP / 10 FP).
 7. Save `.csv` and `.json` artifacts inside `experiments/results/tables/` and `experiments/results/reports/`.
+8. Generate presentation visuals:
+   ```bash
+   python3 scripts/generate_visuals.py
+   ```
+   *Visuals are output to `docs/images/`.*
 
 ## 3. Verifying the Backend
 Ensure the backend provenance tests pass:

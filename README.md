@@ -42,6 +42,30 @@ flowchart TD
 
 *Note: Forensic stages relying on timestamped telemetry are classified as `SIMULATED` or `DERIVED` natively by the Provenance Engine to preserve scientific integrity.*
 
+## Visual Overview
+
+### 1. Architecture Pipeline
+![SecureShield Architecture](docs/images/architecture.png)
+
+### 2. Research Visuals
+**Model Performance Comparison**
+![Model Performance Comparison](docs/images/model-performance.png)
+
+**SHAP Feature Importance**
+![SHAP Feature Importance](docs/images/shap-feature-importance.png)
+
+**Robustness Stress Test**
+![Robustness Stress Test](docs/images/robustness-stress-test.png)
+
+**Correlation Dimension Ablation**
+![Correlation Dimension Ablation](docs/images/correlation-ablation.png)
+
+**Controlled Simulated Forensic Scenario**
+![Controlled Simulated Forensic Scenario](docs/images/ml-vs-secureshield.png)
+
+### 3. Dashboard Screens
+*(Note: Browser screenshot tooling was unavailable during final export; actual dashboard visual captures could not be generated programmatically without fabricating data. Please run the frontend locally to view the interactive dashboard.)*
+
 ## Provenance Model
 SecureShield strictly enforces provenance boundaries to avoid confusing benchmark artifacts with native telemetry. Every data point displayed in the dashboard is tagged:
 *   `MEASURED`: Extracted directly from the original dataset features.
