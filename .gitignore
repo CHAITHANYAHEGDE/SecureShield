@@ -15,29 +15,12 @@ dist/
 venv/
 env/
 
-# Datasets - never commit
-data/raw/*.csv
-data/raw/*.parquet
-data/raw/*.json
-data/processed/*.csv
-data/processed/*.parquet
-data/processed/*.pkl
-data/processed/*.npy
-data/processed/*.npz
-# Exception: keep READMEs
-!data/raw/README.md
-!data/processed/README.md
-!data/samples/README.md
+# Datasets - commit for deployment
+!data/raw/MalMem2022_Binary_Clean.csv
 
-# Models - large artifacts
-models/*.pkl
-models/*.joblib
-models/*.cbm
-models/*.txt
-models/*.json
-models/*.h5
-# Keep metadata JSON  (small)
-!models/metadata*.json
+# Models - commit for deployment
+!models/*.joblib
+!models/*.json
 
 # Experiment results (commit selectively)
 # We want to keep the final tables and reports for reproducibility

@@ -1,0 +1,43 @@
+{
+  "n_original_rows": 58596,
+  "n_after_dedup": 58027,
+  "n_duplicates_removed": 569,
+  "n_features_selected": 14,
+  "selected_features": [
+    "handles.ndesktop",
+    "svcscan.nservices",
+    "pslist.nppid",
+    "malfind.commitCharge",
+    "handles.nsemaphore",
+    "svcscan.nactive",
+    "ldrmodules.not_in_load",
+    "ldrmodules.not_in_load_avg",
+    "pslist.avg_handlers",
+    "handles.nsection",
+    "dlllist.avg_dlls_per_proc",
+    "handles.nmutant",
+    "handles.nkey",
+    "malfind.ninjections"
+  ],
+  "train_size": 40618,
+  "val_size": 5803,
+  "test_size": 11606,
+  "train_class_distribution": {
+    "0": 20461,
+    "1": 20157
+  },
+  "val_class_distribution": {
+    "0": 2923,
+    "1": 2880
+  },
+  "test_class_distribution": {
+    "0": 5847,
+    "1": 5759
+  },
+  "scaler": "RobustScaler",
+  "fill_na_strategy": "zero",
+  "random_state": 42,
+  "test_fraction": 0.2,
+  "val_fraction": 0.1,
+  "leakage_note": "RobustScaler fitted exclusively on training partition. Val/Test sets are transformed-only."
+}
