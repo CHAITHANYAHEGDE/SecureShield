@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: secureshield-api
+    env: python
+    buildCommand: "pip install ."
+    startCommand: "PYTHONPATH=src uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: SECURESHIELD_FRONTEND_URL
+        sync: false
+      - key: SECURESHIELD_DATASET
+        value: "data/processed/cic_malmem_cleaned.csv"
