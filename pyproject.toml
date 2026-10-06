@@ -9,7 +9,7 @@ description = "SecureShield: Intelligent Malware Analysis and Incident Correlati
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [
-    { name = "Chaithanya Hegde", email = "" }
+    { name = "Chaithanya Hegde" }
 ]
 requires-python = ">=3.11"
 dependencies = [
