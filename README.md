@@ -9,6 +9,14 @@
 
 ---
 
+## Live Demo
+- **Frontend (Dashboard)**: [https://secure-shield-phi.vercel.app](https://secure-shield-phi.vercel.app)
+- **Backend API**: [https://secureshield-hrsm.onrender.com/api](https://secureshield-hrsm.onrender.com/api)
+
+> **Note**: This is a controlled research deployment. Authentication and rate limiting are not enabled for this demonstration to allow full evaluation by reviewers.
+
+---
+
 ## Overview
 
 SecureShield is an evidence-aware Security Operations Center (SOC) analytics platform that bridges the gap between raw machine learning (ML) classification and structural forensic reality.
